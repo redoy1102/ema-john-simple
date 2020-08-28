@@ -4,6 +4,7 @@ import { useState } from 'react';
 import './Shop.css'
 import Product from '../Product/Product';
 import Cart from '../Cart/Cart';
+
 const Shop = () => {
     const first10 = fakeData.slice(0,10);
     const [products, setProducts] = useState(first10);
@@ -11,8 +12,7 @@ const Shop = () => {
 
     //button Handler
     const handleAddProduct = (product) => {
-        console.log(product);
-        const newCart = [...cart, Product];
+        const newCart = [...cart, product];
         setCart(newCart);
     }
     console.log(products);

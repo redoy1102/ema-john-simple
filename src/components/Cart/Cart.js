@@ -3,11 +3,11 @@ import React from 'react';
 const Cart = (props) => {
     const cart = props.cart;
     // const total = cart.reduce((total, prd) => total + prd.price , 0)
-
+    //console.log(cart);
     let total = 0;
     for (let i = 0; i < cart.length; i++) {
         const product = cart[i];
-        total = total + product.price;
+        total = total + product.price * product.quantity;
     }
 
     let shipping = 0;
@@ -20,10 +20,7 @@ const Cart = (props) => {
     else if(total > 35){
         shipping = 0;
     }
-     
 const tax = total / 10;
-
-
 const formatNumber = num => {
     const precision = num.toFixed(2);
     return Number(precision);
@@ -37,7 +34,9 @@ const formatNumber = num => {
             <p><small>Shipping Cost: {shipping}</small> </p>
             <p><small>Tax + vat: {formatNumber(tax)}</small></p>
             <p>Total Price: {formatNumber(total + shipping + tax)}</p>
-            <button className="btn-order">Order Now</button>
+            {
+                props.children
+            }
         </div>
     );
 }; 
